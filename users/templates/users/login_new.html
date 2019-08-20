@@ -1,0 +1,64 @@
+{% extends "blog/base.html" %}
+{% block content %}
+
+<div class="pt-2">
+    <fieldset class="form-group">
+        <legend class="border-bottom mb-4">Face Login</legend>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label>Username:</label>
+            {% if username != 'Unknown' %}
+            <input type="text" class="form-control" name="username" readonly value="{{ username }}">
+            {% else %}
+            <input type="text" class="form-control" name="username" readonly value="Not Identified">
+            {% endif %}
+        </div>
+        <div class="form-group">
+            <label>Password:</label>
+            <input type="password" class="form-control" name="password" required>
+        </div>
+        <div class="form-group">
+            {% if username == 'KaungSiThu' or username == 'Julia' or username == 'PaMue' or username == 'AyeMyat' or username == 'ThanNaung' or username == 'Byee' or username == 'KyawPhyo' or username == 'SoungOoPaing' %}
+            <button class="btn btn-outline-success" name="login" type="submit">Login</button>
+            {% else %}
+            <button class="btn btn-outline-danger" name="login" type="submit" disabled>Login</button>
+            {% endif %}
+        </div>
+    </form>
+    <div class="alert alert-primary" role="alert" id="y">
+    </div>
+    <p id="warn"></p>
+    <form method="post" enctype="multipart/form-data" id="x">
+        {% csrf_token %}
+        <div class="form-group">
+            <input type="file" accept="image/*" capture="camera" name="face-image" value="takepic" requiredh>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-outline-success" name="identify" type="submit">Identify</button>
+        </div>
+
+    </form>
+    </fieldset>
+</div>
+<script>
+const form = document.getElementById('x');
+ if( navigator.userAgent.match(/Android/i)
+ || navigator.userAgent.match(/webOS/i)
+ || navigator.userAgent.match(/iPhone/i)
+ || navigator.userAgent.match(/iPad/i)
+ || navigator.userAgent.match(/iPod/i)
+ || navigator.userAgent.match(/BlackBerry/i)
+ || navigator.userAgent.match(/Windows Phone/i))
+ {
+    form.style.display = "block";
+
+ }
+ else {
+        form.style.display = "none";
+        document.getElementById("y").innerHTML = "Please use mobile device to login with facial authentication"
+ }
+
+</script>
+
+{% endblock content %}
