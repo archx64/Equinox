@@ -32,4 +32,5 @@ Redis server must be running for asynchronous programming
 ### How to deploy
 
 Clone this repository. Find the settings.py. Set your external ip as allowed hosts.
+
 Go to root directory and type `python manage.py runserver 0.0.0.0:8000` to run 
