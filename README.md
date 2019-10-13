@@ -34,3 +34,8 @@ Redis server must be running for asynchronous programming
 Clone this repository. Find the settings.py. Set your external ip as allowed hosts.
 
 Go to root directory and type `python manage.py runserver 0.0.0.0:8000` to run 
+
+
+### Contribution
+
+Opinion mining, suggestions and improved chat is in development and not ready to implement. Your contributions will be very helpful.
